@@ -1,0 +1,106 @@
+html,
+body{
+  padding:0;margin:0;
+  width:100%;height:100%;
+  display:flex;
+  /*justify-content:center;*/
+  align-items:self-start;
+  background:#ffe2b8
+}
+/*
+
+.board{
+  width:70%;
+  max-height: 80vh;
+  height: 80%;
+  background: #fdc879;
+  position:relative;
+  border-radius: 10px;
+}
+*/
+
+.stick{
+  width: 15%;
+  height: 90%;
+  background:#dd7c44;
+  position: absolute;
+  overflow:hidden;
+  transition: all 0.05s cubic-bezier(0, 0, 0, 0.81)
+}
+.stick.left{
+  background-image: linear-gradient(135deg, #ffbd5a 0%, #e56c49 67%, #cf3f3f 105%, #000 300%)
+}
+.stick.right{
+  right: 0%;
+  background-image: linear-gradient(-135deg, #ffbd5a 0%, #e56c49 67%, #cf3f3f 105%, #000 300%)
+}
+.stick.left:active{
+  box-shadow: inset 5px 5px 20px #582222;
+}
+.stick.right:active{
+  box-shadow: inset -5px 5px 20px #582222;
+}
+
+.circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: #4ddd58;
+}
+
+.home{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background:#dd2424;
+  position: absolute;
+  transition: all .1s ease-in-out
+}
+
+.timer,
+.reset{
+    border-radius: 5px;
+    padding: 10px;
+    background:#dd2424;
+    color: #FFF;
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: 25px;
+    position: absolute;
+    transition: all .1s ease-in-out
+}
+.reset{
+    font-weight: 400;
+    font-size: 15px;
+    padding: 7px;
+    cursor: pointer;
+}
+
+.home:active{
+  background: #582222;
+}
+
+
+/*--------------------------------- On click ----------------------------*/
+.stick.is-active .circle{
+    animation: ripple .4s ease-in-out;
+}
+
+.home.is-active{
+    background: #4ddd58;
+}
+/*-------------------------------------------------------------------------*/
+
+@keyframes ripple {
+  0% {opacity: 0;}
+  25% {opacity: 1;}
+  100% {
+    width: 900%;
+    height: 150%;
+    padding-bottom: 300%;
+  }
+}

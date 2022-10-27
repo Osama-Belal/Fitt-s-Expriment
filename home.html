@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>GETTING STARTED WITH BRACKETS</title>
+        <meta name="description" content="An interactive getting started guide for Brackets.">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    
+    <body>
+
+        
+        <div id = "left" class = "stick left">
+            <span class="circle"></span>
+        </div>
+
+        <span id = "home" class = "home"></span>
+
+        <div id = "right" class = "stick right">
+            <span class="circle"></span>
+        </div>
+        
+        <div class = "timer">
+            00 : 00 : 00 : 000
+        </div>
+        <div id = "resetTimer" class = "reset">
+            Reset
+        </div>
+        
+        <div id = 'Plot'>
+            <!-- Plotly chart will be drawn inside this DIV -->
+        </div>
+    
+        
+        <!-- Script Here -->
+        <script>
+            // ---------------------------------------- plot ------------------------
+//
+//
+//            var process = {
+//                x: [],
+//                y: [],
+//                mode: 'lines + markers',
+//                type: 'scatter',
+//                name: "Your process"
+//            };
+//            var idle = {
+//                x: [1, 2, 3, 4],
+//                y: [10, 15, 13, 17],
+//                mode: 'lines',
+//                type: 'scatter',
+//                name: "Regression Line"
+//            };
+//            
+//            var layout = {
+//                title: 'Your process'
+//            };
+//
+//
+//            let [milliseconds,seconds,minutes,hours] = [0,0,0,0];
+//            let timerRef = document.querySelector('.timer');
+//            let int = null;
+//            let [pmil, psec] = [0, 0];
+//
+//            document.getElementById('home').addEventListener('click', ()=>{
+//                if(int !== null){
+//                    clearInterval(int);
+//                }
+//                int = setInterval(displayTimer, 10);
+//                
+//                let W = document.getElementById("left").width;
+//                let d = window.innerWidth - document.getElementById("left").offsetLeft;
+//                console.log(d + " " + W);
+//                
+//                if(milliseconds-pmil + (seconds-psec) * 1000)
+//                    process.y.push(milliseconds-pmil + (seconds-psec) * 1000);
+//                pmil = milliseconds;psec = seconds;
+//            });
+//
+//            document.getElementById('resetTimer').addEventListener('click', ()=>{
+//                [milliseconds,seconds,minutes,hours] = [0,0,0,0];
+//                timerRef.innerHTML = '00 : 00 : 00 : 000 ';
+//                $(".stcik.left").removeClass("is-active");
+//                $(".home").removeClass("is-active");
+//                $(".stcik.right").removeClass("is-active");
+//                
+//                var data = [process, idle];
+//                $("#Plot").css({width: window.innerWidth, height: window.innerHeight});
+//                Plotly.newPlot('Plot', data, layout);
+//            });
+//
+//            function displayTimer(){
+//                milliseconds+=10;
+//                if(milliseconds == 1000){
+//                    milliseconds = 0;
+//                    seconds++;
+//                    if(seconds == 60){
+//                        seconds = 0;
+//                        minutes++;
+//                        if(minutes == 60){
+//                            minutes = 0;
+//                            hours++;
+//                        }
+//                    }
+//                }
+//                let h = hours < 10 ? "0" + hours : hours;
+//                let m = minutes < 10 ? "0" + minutes : minutes;
+//                let s = seconds < 10 ? "0" + seconds : seconds;
+//                let ms = milliseconds < 10 ? "00" + milliseconds : milliseconds < 100 ? "0" + milliseconds : milliseconds;
+//
+//                timerRef.innerHTML = ` ${h} : ${m} : ${s} : ${ms}`;
+//            }
+            
+            
+            
+            
+
+            // ---------------------------------------- plot ------------------------
+
+
+//            var trace1 = {
+//              x: [1, 2, 3, 4],
+//              y: [10, 15, 13, 17],
+//              mode: 'markers',
+//              type: 'scatter'
+//            };
+//
+//            var trace2 = {
+//              x: [2, 3, 4, 5],
+//              y: [16, 5, 11, 9],
+//              mode: 'lines',
+//              type: 'scatter'
+//            };
+//
+//            var trace3 = {
+//              x: [1, 2, 3, 4],
+//              y: [12, 9, 15, 12],
+//              mode: 'lines+markers',
+//              type: 'scatter'
+//            };
+//
+//            var data = [trace1, trace2, trace3];
+//
+//            Plotly.newPlot('myDiv', data);
+
+            
+            
+    </script>
+        
+        
+        <script src="Js/jquery-2.2.3.min.js"></script>
+        <script src="Js/jquery-1.11.3.js"></script>
+        <script src="Js/jquery-3.2.1.min.js"></script>
+        <script src="Js/plotly.js"></script>
+        <script src="Js/javascript.js"></script>
+    </body>
+</html>
