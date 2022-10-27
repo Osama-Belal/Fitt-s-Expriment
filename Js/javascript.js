@@ -2,14 +2,15 @@
 // ----------------------------- home button style -----------------------------
 
 var homeWidth = Math.random() * 100 + 10,
-    stckWidth = Math.random() * 300 + 5;
+    stckWidth = Math.random() * 300 + 5,
+    margin = Math.random() * window.innerWidth * .25;
 
 
 $('.stick').css("width", stckWidth + 'px');
 $('.stick').css("top", (window.innerHeight - $(".stick").height()) / 2);
 
-$('.stick.left').css("left", window.innerWidth/50 + 'px');
-$('.stick.right').css("right", window.innerWidth/50 + 'px');
+$('.stick.left').css("left", margin + 'px');
+$('.stick.right').css("right", margin + 'px');
 
 
 
@@ -108,8 +109,8 @@ $(window).on("resize", function () {
                 $('.stick').css("width", stckWidth + 'px');
                 $('.stick').css("top", (window.innerHeight - $(".stick").height()) / 2);
                 
-                $('.stick.left').css("left", window.innerWidth/50 + 'px');
-                $('.stick.right').css("right", window.innerWidth/50 + 'px');
+                $('.stick.left').css("left", margin + 'px');
+                $('.stick.right').css("right", margin + 'px');
 
 
                 homeLft = window.innerWidth / 2 - homeWidth / 2;
