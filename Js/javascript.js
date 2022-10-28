@@ -56,12 +56,6 @@ $(window).on("resize", function () {
     $('.reset').css("bottom", (window.innerHeight - $(".stick").height()) / 2 + 50);
 });
 
-
-
-// ------------------------------ timer ------------------------------
-
-
-
 // ------------------------------ click effect ------------------------
 
 (function ($, window, document, undefined) {
@@ -181,6 +175,13 @@ $(window).on("resize", function () {
 
 // ---------------------------------------- plot ------------------------
 
+            
+            var acuX = 0,
+                acuX2 = 0,
+                acuY = 0,
+                acuXY = 0, 
+                a = 0, b = 0,
+                minimum = -1, maximum = 4;
 
             var process = {
                 x: [],
@@ -189,23 +190,13 @@ $(window).on("resize", function () {
                 type: 'scatter',
                 name: "Your process"
             };
-            var idle = {
-                x: [1, 2, 3, 4],
-                y: [10, 15, 13, 17],
-                mode: 'lines',
-                type: 'scatter',
-                name: "Regression Line"
-            };
-            
-            var layout = {
-                title: 'Your process'
-            };
 
 
             let [milliseconds,seconds,minutes,hours] = [0,0,0,0];
             let timerRef = document.querySelector('.timer');
             let int = null;
             let [pmil, psec] = [0, 0];
+            let d = 0, W = 0;
 
             document.getElementById('home').addEventListener('click', ()=>{
                 if(int !== null){
@@ -213,15 +204,27 @@ $(window).on("resize", function () {
                 }
                 int = setInterval(displayTimer, 10);
                 
-                let W = stckWidth;
-                let d = window.innerWidth - window.innerWidth/25 - W*2;
+                W = stckWidth;
+                d = window.innerWidth - window.innerWidth/25 - W*2;
+                
+                minimum = Math.min(minimum, Math.log2(2*d/W));
+                maximum = Math.max(maximum, Math.log2(2*d/W));
+                
+                acuX += Math.log2(2*d/W);
+                acuX2 += Math.log2(2*d/W) * Math.log2(2*d/W);
+                
                 process.x.push(Math.log2(2*d/W));
             });
 
             document.getElementById('left').addEventListener('click', ()=>{
                 if(milliseconds + seconds * 1000 && 
                    document.getElementById("right").classList.contains("is-active")){
+                    
+                    acuY += (milliseconds - pmil + (seconds - psec) * 1000);
                     process.y.push(milliseconds - pmil + (seconds - psec) * 1000);
+                    
+                    acuXY += (milliseconds - pmil + (seconds - psec) * 1000) * Math.log2(2*d/W);
+                    
                     pmil = milliseconds;psec = seconds;
                     clearInterval(int);
                 }
@@ -229,7 +232,12 @@ $(window).on("resize", function () {
             document.getElementById('right').addEventListener('click', ()=>{
                 if(milliseconds + seconds * 1000 && 
                    document.getElementById("left").classList.contains("is-active")){
+                    
+                    acuY += (milliseconds - pmil + (seconds - psec) * 1000);
                     process.y.push(milliseconds - pmil + (seconds - psec) * 1000);
+                    
+                    acuXY += (milliseconds - pmil + (seconds - psec) * 1000) * Math.log2(2*d/W);
+                    
                     pmil = milliseconds;psec = seconds;
                     clearInterval(int);
                 }
@@ -241,6 +249,22 @@ $(window).on("resize", function () {
                 $(".stick.left").removeClass("is-active");  
                 $(".home").removeClass("is-active");
                 $(".stick.right").removeClass("is-active");
+                
+                var n = process.x.length;
+                b = (n * acuXY - acuX * acuY) / (n * acuX2 - acuX * acuX);
+                a = (acuY - b * acuX) / n;
+                
+                var idle = {
+                    x: [minimum, maximum],
+                    y: [a + b * minimum, a + b * maximum],
+                    mode: 'lines',
+                    type: 'scatter',
+                    name: "Regression Line"
+                };
+                
+                var layout = {
+                    title: 'This plot represents Fitt\'s Law.<br>MT = a + b * ID \t\t a = ' + a + ', b = ' + b 
+                };
                 
                 var data = [process, idle];
                 $("#Plot").css({width: window.innerWidth, height: window.innerHeight});
