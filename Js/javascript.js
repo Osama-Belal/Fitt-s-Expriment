@@ -1,8 +1,8 @@
 /*global $, alert, console*/
 // ----------------------------- home button style -----------------------------
 
-var homeWidth = (Math.random() + .5) * 50,
-    stckWidth = Math.random() * 300 + 20,
+var homeWidth = (Math.random() + .5) * 30,
+    stckWidth = Math.random() * 150 + 20,
     margin = Math.random() * window.innerWidth * .25;
 
 
@@ -103,7 +103,7 @@ $(window).on("resize", function () {
                 $('.stick.right').removeClass("is-active");
                 
                 homeWidth = (Math.random() + .5) * 50,
-                stckWidth = Math.random() * 300 + 20,
+                stckWidth = Math.random() * 150 + 20,
                 margin = Math.random() * window.innerWidth * .25;
 
                 $('.stick').css("width", stckWidth + 'px');
