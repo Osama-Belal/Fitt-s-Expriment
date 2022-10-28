@@ -104,7 +104,7 @@ $(window).on("resize", function () {
                 
                 homeWidth = Math.random() * 100 + 10,
                 stckWidth = Math.random() * 300 + 5,
-                stckWidth = Math.random() * 300 + 5;
+                margin = Math.random() * window.innerWidth * .25;
 
                 $('.stick').css("width", stckWidth + 'px');
                 $('.stick').css("top", (window.innerHeight - $(".stick").height()) / 2);
