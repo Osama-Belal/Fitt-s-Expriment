@@ -19,11 +19,21 @@ $('.home').css({
     width: homeWidth + 'px',
     height: homeWidth + 'px'
 });
+
 $('.home').css("left", homeLft);
 $('.home').css("top", (window.innerHeight - $(".home").height()) / 2);
 
 $('.timer').css("left", (window.innerWidth - $(".timer").width()) / 2);
 $('.timer').css("bottom", (window.innerHeight - $(".stick").height()) / 2);
+
+$('.start').css("left", (window.innerWidth - $(".start").width()) / 2 - 5);
+$('.start').css("bottom", (window.innerHeight - $(".stick").height()));
+
+$('.info').css("left", (window.innerWidth - $(".info").width()) / 2);
+$('.info').css("top", (window.innerHeight/4 - $(".info").height()) / 2);
+
+$('.shape').css("left", (window.innerWidth - $(".shape").width()) / 2);
+$('.shape').css("top", (window.innerHeight - $(".shape").height()) / 2);
 
 $('.reset').css("left", (window.innerWidth - $(".reset").width()) / 2);
 $('.reset').css("bottom", (window.innerHeight - $(".stick").height()) / 2 + 50);
@@ -33,6 +43,10 @@ $(window).on("resize", function () {
     'use strict';
     $('.stick').css("top", (window.innerHeight - $(".stick").height()) / 2);
     $('.timer').css("left", (window.innerWidth - $(".timer").width()) / 2);
+    $('.start').css("bottom", (window.innerHeight - $(".stick").height()));
+    $('.info').css("top", (window.innerHeight/4 - $(".info").height()) / 2);
+    $('.shape').css("top", (window.innerHeight - $(".shape").height()) / 2);
+    
     
     homeLft = window.innerWidth / 2 - homeWidth / 2;
     $('.home').css("left", homeLft);
@@ -54,7 +68,25 @@ $(window).on("resize", function () {
     
     'use strict';
     var $stick = $('.stick');
+    
+        
+    
+    // ----------------------- Loading Screen ------------------------------------------
+    
+    $('.start').on("click", function(){
+        $(".loading").delay(500).fadeOut("slow", function () {
+            $("body").css("overflow", "auto");
+            $(".header").addClass("hdr-trnslt");
+        });
+    });
 
+
+    // ------------------------- click on circle to start ---------------------------------------
+    $('.home').on("click", function(){
+       $('.home').addClass('is-active');
+    });
+   
+    
     $('.stick').on('click.ui.ripple', function (e) {
         
         // only apply if the user started with home button otherwise no change
@@ -77,15 +109,14 @@ $(window).on("resize", function () {
         
     });
 
+    
+    
     $stick.on('animationend webkitAnimationEnd oanimationend MSAnimationEnd', function (e) {
         $('.stick.is-active .circle').css({
-            width: 5000 + 'px',
-            height: 2000 + 'px'
+            width: 500000 + 'px',
+            height: 200000 + 'px'
         });
-        
-//        $(this).removeClass('is-active');
-        
-        
+            
         // ------------------------------ Reset ------------------------
         let leftElem = document.getElementById("left");
         let homeElem = document.getElementById("home");
@@ -120,19 +151,9 @@ $(window).on("resize", function () {
         }
         
     });
-
-})(jQuery, window, document);
     
-
-(function ($, window, document, undefined) {
     
-    'use strict';
-    $('.home').on("click", function(){
-       $('.home').addClass('is-active');
-    });
-        
 })(jQuery, window, document);
-
 
 
 
