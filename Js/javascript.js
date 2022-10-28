@@ -229,6 +229,7 @@ $(window).on("resize", function () {
                     clearInterval(int);
                 }
             });
+
             document.getElementById('right').addEventListener('click', ()=>{
                 if(milliseconds + seconds * 1000 && 
                    document.getElementById("left").classList.contains("is-active")){
@@ -263,7 +264,29 @@ $(window).on("resize", function () {
                 };
                 
                 var layout = {
-                    title: 'This plot represents Fitt\'s Law.<br>MT = a + b * ID \t\t a = ' + a + ', b = ' + b 
+                    title: 'This plot represents Fitt\'s Law.<br>MT = a + b * ID \t\t a = ' + a + ', b = ' + b ,
+                    
+                    xaxis: {
+                        title: {
+                            text: 'Index of Difficulty (ID)',
+                            font: {
+                                family: 'Raleway, Helvetica, sans-serif',
+                                size: 18,
+                                color: '#7f7f7f'
+                            }
+                        },
+                    },
+                    
+                    yaxis: {
+                        title: {
+                            text: 'Movement Time (MT)',
+                            font: {
+                                family: 'Raleway, Helvetica, sans-serif',
+                                size: 18,
+                                color: '#7f7f7f'
+                            }
+                        }
+                    }
                 };
                 
                 var data = [process, idle];
