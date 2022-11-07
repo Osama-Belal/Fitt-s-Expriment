@@ -3,4 +3,4 @@
 *Fitts’s Law is about how long it takes to move your hand to an object.* <br/>
 ## Have Fun !
 <br><br>
-##Link : https://osama-belal.github.io/Fitt-s-Expriment/
+## Link : https://osama-belal.github.io/Fitt-s-Expriment/
